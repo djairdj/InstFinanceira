@@ -41,7 +41,11 @@ class ContaUI:
                 else:
                     print("Senha errada, não é possível sacar.")
             elif opt == '3':
-                self.menu_transferir(self.bancoI)
+                senha = input("Digite a senha exata da conta: ")
+                if senha == self.conta.senha:
+                    self.menu_transferir(self.bancoI)
+                else:
+                    print("Senha errada, não é possível transferir.")
             elif opt == '4':
                 senha = input("Digite a senha exata da conta: ")
                 if senha == self.conta.senha:

@@ -23,12 +23,12 @@ class AgenciaUI:
             print(",{},".format("_" * largura))
             print("|{0}Menu Agencia{0}|".format("." * int(largura / 2 - 6)))
             print("|{}|".format("_" * largura))
-            print("| 0 - Sair\t\t\t\t\t |")
-            print("| 1 - Adicionar Conta(s)\t |")
-            print("| 2 - Listar Conta(s)\t\t |")
-            print("| 3 - Remover Conta(s)\t\t |")
-            print("| 4 - Ajustar Conta \t\t |")
-            print("| 5 - Exibir Clientes \t\t |")
+            print("""| 0 - Sair                   |
+| 1 - Adicionar Conta(s)     |
+| 2 - Listar Conta(s)        |
+| 3 - Remover Conta(s)       |
+| 4 - Ajustar Conta          |
+| 5 - Exibir Clientes        |""")
 
             print("|{}|".format("-" * largura))
             option = input("Escolha uma opção acima: ")

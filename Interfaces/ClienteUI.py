@@ -14,9 +14,6 @@ class ClienteUI:
         return 'ClienteUI Nao implementado'
 
     def menu(self):
-        """
-       :return: Sem retorno
-        """
         option = '-1'
         while option != '0':
             men = ("\n"
@@ -71,7 +68,6 @@ class ClienteUI:
                    '| 1 - Adicionar conta       |\n'
                    '| 2 - Remover conta         |\n'
                    '| 3 - Listar conta(s)       |\n'
-                   # "| 4 - Mostrar saldo         |\n"
                    '| 4 - Operar conta          |\n'
                    '|---------------------------|\n'
                    )
@@ -85,12 +81,9 @@ class ClienteUI:
                 self.menu_remover_conta()
             elif opt == '3':
                 if len(self.client.contas) > 0:
-                    # listar_contas_cliente(banco, cliente.cpf)
                     print(self.lista_de_contas(), end='')
                 else:
                     print('Cliente sem contas para listar.')
-            # elif opt == '4':
-            #     print("aqui é pra mostrar saldo")
             elif opt == '4':
                 self.operar_conta()
             else:
@@ -247,19 +240,22 @@ class ClienteUI:
 
     @staticmethod
     def define_novo_address() -> Endereco:
-        rua = input('Informe o nome da rua: ')
+        rua = input('Informe o nome da rua: ').capitalize()
         number = input('Informe o número: ')
         complemento = input("Digite o complemento: ")
-        cep = input("Digite o CEP: ")
-
-        city = input("Digite o nome da cidade: ").upper()
-        uf = input("Digite a sigla da Unidade Federativa(UF): ").upper()
-        end = Endereco(rua, number, complemento, cep, city, uf)
+        cep = Endereco.ajusta_cep(input("Digite o CEP: "))
+        while (cep=='00.000-000'):
+            print("Informe um cep válido:")
+            cep=Endereco.ajusta_cep(input("Digite o cep: "))
+        
+        end = Endereco(rua, number, complemento, cep)
         return end
 
     @staticmethod
     def define_novo_telefone() -> Telefone:
-        ddd = input('Informe o DDD: ')
+        ddd = Telefone.formata_ddd(input('Informe o DDD: '))  
+        while(ddd =='000'):
+            ddd = Telefone.formata_ddd(input('Informe um DDD válido: '))            
         phone = input('Informe o telefone: ')
         telefone = Telefone(ddd, phone)
         return telefone

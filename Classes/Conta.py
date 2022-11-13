@@ -1,6 +1,5 @@
 import random
 
-
 class Conta:
     numeral: int = 9999
     digit: int = 0
