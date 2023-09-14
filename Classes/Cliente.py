@@ -11,28 +11,28 @@ class Cliente:
         self.telefones.append(phone)
 
     def __str__(self):
-        reuse = f'Cliente: {self.nome}'
-        reuse += f"\nCPF: {self.cpf}"
-        reuse += ('\nE-mail: ' + self.email) if self.email != '' else ""
+        result = f'Cliente: {self.nome}'
+        result += f"\nCPF: {self.cpf}"
+        result += ('\nE-mail: ' + self.email) if self.email != '' else ""
         if len(self.telefones) > 0:
-            reuse += '\nTelefone(s): '
+            result += '\nTelefone(s): '
             for h in range(len(self.telefones)):
-                reuse += self.telefones[h].__str__()
+                result += self.telefones[h].__str__()
                 if h < len(self.telefones) - 1:
-                    reuse += " / "
+                    result += " / "
         if len(self.address) > 0:
-            reuse += "\nEndereço(s):\n"
+            result += "\nEndereço(s):\n"
             for y in range(len(self.address)):
-                reuse += self.address[y].__str__()
+                result += self.address[y].__str__()
                 if y < len(self.address) - 1:
-                    reuse += "\n"
+                    result += "\n"
         if len(self.contas) > 0:
-            reuse += '\nContas:\n'
+            result += '\nContas:\n'
             for f in range(len(self.contas)):
-                reuse += self.contas[f].__str__()
+                result += self.contas[f].__str__()
                 if f < len(self.contas) - 1:
-                    reuse += '\n'
-        return reuse
+                    result += '\n'
+        return result
 
     @staticmethod
     def ajusta_cpf(cp_efi: str):
